@@ -10,4 +10,8 @@
 
 @interface LoginController : UIViewController
 
+@property (strong, nonatomic) NSMutableArray* pages;
+
 @end
+
+

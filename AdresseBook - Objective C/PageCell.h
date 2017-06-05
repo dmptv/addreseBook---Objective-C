@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Page.h"
 
 @interface PageCell : UICollectionViewCell
 
-
+@property (strong, nonatomic) Page* page;
 
 @end

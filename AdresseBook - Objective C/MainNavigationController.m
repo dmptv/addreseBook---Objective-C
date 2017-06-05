@@ -8,6 +8,9 @@
 
 #import "MainNavigationController.h"
 #import "LoginController.h"
+#import "HomeController.h"
+
+#import "Utils.h"
 
 @interface MainNavigationController ()
 
@@ -15,12 +18,29 @@
 
 @implementation MainNavigationController
 
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+
+}
+
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self showLoginController];
+    if ([self isLoggedIn]) {
+        UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
+        HomeController* hc = [[HomeController alloc] initWithCollectionViewLayout:layout];
+        // поставимм на стэк
+        self.viewControllers = @[hc];
+    } else {
+        [self showLoginController];
+    }
+}
+
+
+- (BOOL) isLoggedIn {
+    return isLoggedIn();
 }
 
 - (void) showLoginController {
@@ -31,3 +51,9 @@
 
 
 @end
+
+
+
+
+
+
